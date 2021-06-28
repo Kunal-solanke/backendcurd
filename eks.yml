@@ -1,0 +1,23 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ecare-dev-cluster-VandanaPOD
+  version: "1.20"
+  region: us-east-1
+
+vpc:
+  subnets:
+    public:
+      us-east-1a: { id: subnet-038ccfb5c2c3040e7 }
+      us-east-1b: { id: subnet-04ace0831bd0b49a6 }
+
+managedNodeGroups:
+  - name: ecare-dev-ng-VandanaPOD
+    minSize: 2
+    maxSize: 2
+    desiredCapacity: 2
+    instanceType: t3.medium
+    volumeSize: 50
+    ssh:
+      publicKeyName: eCare_new
